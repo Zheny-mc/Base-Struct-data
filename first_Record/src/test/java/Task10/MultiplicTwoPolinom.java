@@ -29,7 +29,5 @@ public class MultiplicTwoPolinom {
         }
         System.out.println("_________________________");
         p1Xp2.printPolinom();
-        
-
     }
 }

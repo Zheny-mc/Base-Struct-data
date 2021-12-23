@@ -20,10 +20,10 @@ public class TestSwap {
 
     @Test
     public void testSwap() {
-        Stack<Integer> st1 = new Stack<>();
-        Stack<Integer> st2 = new Stack<>();
-        Stack<Integer> copy_st1 = new Stack<>();
-        Stack<Integer> copy_st2 = new Stack<>();
+        LinkedListStack<Integer> st1 = new LinkedListStack<>();
+        LinkedListStack<Integer> st2 = new LinkedListStack<>();
+        LinkedListStack<Integer> copy_st1 = new LinkedListStack<>();
+        LinkedListStack<Integer> copy_st2 = new LinkedListStack<>();
 
         for (Integer i: testDataF) {
             st1.push(i);
@@ -35,33 +35,26 @@ public class TestSwap {
             copy_st2.push(i);
         }
 
-        Iterator<Integer> i = st1.iterator();
-        Iterator<Integer> i2 = st2.iterator();
-
         List<Integer> list = new ArrayList<Integer>();
         List<Integer> list2 = new ArrayList<Integer>();
 
-        while(i.hasNext()) {
-            list.add(i.next());
+        while(!st1.isEmpty()) {
+            list.add(st1.pop());
         }
 
-        while(i2.hasNext()) {
-            list2.add(i2.next());
+        while(!st2.isEmpty()) {
+            list2.add(st2.pop());
         }
 
-        st1.clear();
-
-        for(int j = 0; j < list2.size(); j++) {
+        for(int j = list2.size()-1; j >= 0; j--) {
             st1.push(list2.get(j));
         }
 
-        st2.clear();
-
-        for(int j = 0; j < list.size(); j++) {
+        for(int j = list.size()-1; j >= 0; j--) {
             st2.push(list.get(j));
         }
 
-        assertEquals(copy_st1, st2);
-        assertEquals(copy_st2, st1);
+        assertEquals(copy_st1.toString(), st2.toString());
+        assertEquals(copy_st2.toString(), st1.toString());
     }
 }
